@@ -21,6 +21,12 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    stripe: {
+      lazyLoad: true,
+      publishableKey: 'abc123456',
+      redirect_uri: `http://localhost:4200/`,
+    },
   };
 
   if (environment === 'development') {
@@ -32,6 +38,8 @@ module.exports = function (environment) {
   }
 
   if (environment === 'test') {
+    ENV.stripe.mock = true;
+
     // Testem prefers this...
     ENV.locationType = 'none';
 
